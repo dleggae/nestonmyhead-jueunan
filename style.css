@@ -1,0 +1,160 @@
+body {
+  margin: 0;
+  overflow: hidden;
+
+  background: #f3f1eb;
+}
+
+.viewport {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.world {
+  position: absolute;
+  width: 3000px;
+  height: 2200px;
+
+  transform-origin: 0 0;
+}
+
+@media (max-width: 767px) {
+  .world {
+    width: 2200px;
+    height: 3600px;
+  }
+}
+
+.img {
+  position: absolute;
+  width: 160px;
+
+  cursor: grab;
+
+    filter: drop-shadow(0 6px 8px rgba(0,0,0,0.25));
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease,
+    filter 0.25s ease;
+}
+
+.img:hover {
+  transform: scale(1.08);
+}
+
+.img:active {
+  cursor: grabbing;
+}
+
+.img.active {
+  transform: scale(1.15);
+  filter:
+    brightness(1.15)
+    drop-shadow(0 8px 12px rgba(0,0,0,0.3));
+}
+
+.img.dim {
+  opacity: 0.65;
+  filter:
+    blur(1px)
+    drop-shadow(0 6px 8px rgba(0,0,0,0.18));
+}
+
+.modal {
+  display: none;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.08);
+
+  z-index: 9999;
+}
+
+.modal-content {
+  width: 600px;
+  max-width: 85vw;
+  max-height: 70vh;
+
+  
+  overflow-y: auto;
+
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+
+  padding: 25px;
+  box-sizing: border-box;
+}
+
+.modal-content h2 {
+  
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.modal-content p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 1em;
+}
+
+.modal-content img {
+  max-width: 100%;
+  display: block;
+  margin: 15px 0;
+}
+
+.modal-content::-webkit-scrollbar {
+  display: none;
+}
+
+.reset-view {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+
+  z-index: 10000;
+
+  border: none;
+  padding: 10px 14px;
+
+  font-size: 13px;
+  font-weight: 600;
+  font-family: "Pretendard", sans-serif;
+
+  cursor: pointer;
+
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(8px);
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.reset-view:hover {
+  transform: translateY(-2px);
+}
+
+.reset-view:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.modal-content,
+.modal-content p,
+.modal-content h2 {
+  font-family: "Gowun Batang", serif;
+}
+
+.viewport {
+  touch-action: none;
+}
