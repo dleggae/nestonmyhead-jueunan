@@ -378,6 +378,11 @@ function getTouchDistance(touches) {
 
 movablePieces.forEach(piece => {
   piece.addEventListener("touchstart", e => {
+
+    if (e.target.closest("a")) {
+      return;
+   }
+    
     if (e.touches.length !== 1) return;
 
     e.preventDefault();
