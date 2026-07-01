@@ -228,3 +228,7 @@ body {
 .text-piece {
   cursor: grab;
 }
+
+.text-piece a {
+  pointer-events: auto;
+}
