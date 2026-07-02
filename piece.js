@@ -545,3 +545,10 @@ function moveResetButton() {
 }
 
 moveResetButton();
+
+const noteLoop = document.querySelector(".note-loop");
+const noteCopy = document.querySelector(".note-copy");
+
+if (noteLoop && noteCopy) {
+  noteLoop.appendChild(noteCopy.cloneNode(true));
+}
