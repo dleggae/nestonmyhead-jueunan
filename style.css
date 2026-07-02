@@ -257,34 +257,32 @@ body {
   z-index: 1;
 
   overflow:hidden;
+  .note-loop {
+  animation: noteLoopScroll 160s linear infinite;
+}
+
+.note-copy {
+  padding-bottom: 80px;
+}
   pointer-events: none;
   box-shadow:
     -3px 0 35px rgba(255,255,255,.95),
      3px 0 35px rgba(255,255,255,.95);
 }
 .fixed-note-content {
-  animation: noteScroll 80s linear infinite;
-}
+animation: noteLoopScroll 160s linear infinite;}
 
 .fixed-note:hover .fixed-note-content {
   animation-play-state: paused;
 }
 
-@keyframes noteScroll {
-  0% {
+@keyframes noteLoopScroll {
+  from {
     transform: translateY(0);
   }
 
-  45% {
-    transform: translateY(-60%);
-  }
-
-  55% {
-    transform: translateY(-60%);
-  }
-
-  100% {
-    transform: translateY(0);
+  to {
+    transform: translateY(-50%);
   }
 }
 
@@ -293,6 +291,22 @@ body {
 }
 
 .note-date{
+    font-family:"Pretendard", sans-serif;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.08em;
+    opacity:.75;
+    margin-bottom:4px;
+}
+
+.note-book{
+    font-family:"Noto Serif KR", serif;
+    font-size:13px;
+    font-weight:700;
+    line-height:1.4;
+    margin-bottom:18px;
+}
+.note-author{
     font-family:"Pretendard", sans-serif;
     font-size:12px;
     font-weight:600;
