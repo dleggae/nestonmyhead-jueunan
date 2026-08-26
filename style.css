@@ -106,7 +106,7 @@ body {
 .modal-content p {
   font-size: 15px;
   line-height: 1.7;
-  margin-bottom: 1em;
+  margin: 0;
 }
 
 .modal-content img {
@@ -313,4 +313,36 @@ animation: noteLoopScroll 160s linear infinite;}
     letter-spacing:.08em;
     opacity:.75;
     margin-bottom:4px;
+}
+/* 16번 이미지 전용 화면 */
+
+.special-image-overlay {
+  display: none;
+
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 99999;
+
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  cursor: pointer;
+}
+
+.special-image-overlay img {
+  max-width: calc(100vw - 20px);
+  max-height: calc(100vh - 20px);
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+
+  display: block;
 }
