@@ -7,6 +7,10 @@ const modal = document.getElementById("modal");
 const modalContent = document.getElementById("modal-content");
 const resetButton = document.getElementById("reset-view");
 
+const specialVideo = document.getElementById("special-video");
+const specialOverlay = document.getElementById("special-image-overlay");
+const specialImage = document.getElementById("special-image");
+
 const isMobile = window.innerWidth < 768;
 const WORLD_WIDTH = isMobile ? 2200 : 3000;
 const WORLD_HEIGHT = isMobile ? 3600 : 2200;
@@ -99,7 +103,6 @@ const contents = {
     살아있다고 생각하는 나보다 마를고 죽을사 나무목이 더 오래 한라산에 있다. </p>
   `,
 
-
   12: `
     <img src="images/old2.jpg">
     <img src="images/old3.jpg">
@@ -109,10 +112,45 @@ const contents = {
 
   13: `
     <img src="images/stone1.jpg">
-  ` 
+  ` ,
 
+  14: `
+  <p>이곳과 저곳의 차이. 밀집한 곳과 헐렁한 곳.</p>
+  <p>규칙없는 표기.</p>
+  <p>붉은 색의 돌출.</p>
+  <br><br>
+  <p>푹 꽂음. 박혀 있음. 깊이의 차이. 높낮이.</p>
+  <br>
+  <p>어떤 표기</p>
+  <p>이곳으로 오세요. 오지 마세요.</p>
+  <p>발견하세요. 주의하세요.</p>
+  ` ,
+
+  15: `
+  <p>가장 간결한. 기본 값</p>
+  <p>물체와 그것을 다룬 손길. 그리고 중력</p>
+  <p>간결할 수록 결백해지는 마음</p>
+  <p>꾸밈도 숨김도 없는 헐벗은 모양새</p>
+  <p>선선하다 못해 스산한 고요</p>
+  <p>둘러싼 역동과 기억</p>
+ ` ,
+
+  17: `
+    <img src="images/tile.png">
+  ` ,
+
+  18: `
+  <p>그림을 그렸다면 땅을 찾아 헤맸을 것이다.</p>
+  <p>이것의 푹 꺼진, 무너진 모양새에 섞여 서사를 가질 수 있을 땅의 상태를 찾아서.</p>
+  <p>매마른 땅. 젖은 땅. 풀이 자란 땅. 돌이 가득한 땅 중 그 어떤 상태가 이 천막과 더불어 섞일 수 있을까 고민했을 것이다.</p>
+  <br>
+  <p>너를 잘라 붙였다면 뒤집었을 것이다. 
+  가장 윗면에 뒤집어 붙여 파란색 면이 불규칙적으로 꺾인 모양 자체를 보여줬을 것이다.</p>
+  <p>사방으로 퍼진 끈은 분절나서 다른 곳에 서 뻗어질 것이다.</p>
+  `,
 
 };
+
 
 const textContents = {
   t1: {
@@ -223,6 +261,37 @@ images.forEach(img => {
   img.addEventListener("dblclick", e => {
     e.stopPropagation();
 
+  // 영상은 기존 상세창을 띄우지 않음 
+  if (img.tagName === "VIDEO") { 
+  specialVideo.src = img.src;
+  specialImage.style.display = "none";
+  specialVideo.style.display = "block";
+
+  specialOverlay.style.display = "flex";
+  specialVideo.play();
+
+  return;
+}
+
+  // 16번 이미지는 별도 화면으로 띄움
+if (img.dataset.id === "16") {
+  specialImage.style.display = "block";
+  specialVideo.style.display = "none";
+
+  specialImage.src = "images/templeA.jpg";
+  specialOverlay.style.display = "flex";
+  return;
+}
+
+if (img.dataset.id === "17") {
+  specialImage.style.display = "block";
+  specialVideo.style.display = "none";
+
+  specialImage.src = "images/tile.png";
+  specialOverlay.style.display = "flex";
+  return;
+}
+
     const id = img.dataset.id;
     modalContent.innerHTML = contents[id] || "";
 
@@ -240,6 +309,7 @@ images.forEach(img => {
     modal.style.display = "flex";
   });
 });
+
 
 /* 휠 확대/축소 */
 document.addEventListener("wheel", e => {
@@ -403,9 +473,24 @@ resetButton.addEventListener("click", () => {
     img.classList.remove("dim");
   });
 
+  specialOverlay.style.display = "none";
+  specialImage.src = "";
+
   resetView();
   randomLayout();
 });
+
+specialOverlay.addEventListener("click", () => {
+
+  specialOverlay.style.display = "none";
+
+  specialImage.src = "";
+
+  specialVideo.pause();
+  specialVideo.src = "";
+
+});
+
 
 window.addEventListener("resize", resetView);
 
