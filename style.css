@@ -258,7 +258,7 @@ body {
 
   overflow:hidden;
   .note-loop {
-  animation: noteLoopScroll 53.5s linear infinite;
+  animation: noteLoopScroll 54s linear infinite;
 }
 
 .note-copy {
