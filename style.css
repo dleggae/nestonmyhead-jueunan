@@ -258,11 +258,11 @@ body {
 
   overflow:hidden;
   .note-loop {
-  animation: noteLoopScroll 60s linear infinite;
+  animation: noteLoopScroll 40s linear infinite;
 }
 
 .note-copy {
-  padding-bottom: 80px;
+  padding-bottom: 70px;
 }
   pointer-events: none;
   box-shadow:
